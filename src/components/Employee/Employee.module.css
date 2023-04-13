@@ -1,0 +1,280 @@
+.container {
+  width: 1200px;
+  max-width: 95vw;
+  min-height: 80vh;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.container > header {
+  width: 100%;
+  background-color: #435d7d;
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.container > header .left > h2 {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.container > header .right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.container > header .right > button {
+  padding: 1rem 2rem;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+.container > header .right > button:hover {
+  opacity: 0.7;
+}
+
+.container > header .right > button.delete {
+  background-color: #d9534f;
+}
+
+.container > header .right > button.add {
+  background-color: #449d44;
+}
+
+.container > header .right > button > svg {
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 600px) {
+  .container > header .left > h2 {
+    font-size: 1.4rem;
+  }
+  .container > header .right > button > span {
+    display: none;
+  }
+  .container > header .right > button > svg {
+    font-size: 1.4rem;
+  }
+}
+
+/* table */
+.container > .table {
+  flex: 1;
+  background-color: #fff;
+  overflow-x: auto;
+}
+.container > .table > table {
+  width: 100%;
+  padding: 2rem;
+  /* border-collapse: collapse; */
+  background-color: #fff;
+}
+
+.container > .table > table > thead > tr > th {
+  text-align: left;
+  padding: 1rem;
+  font-size: 1.4rem;
+  color: #435d7d;
+  background-color: #fff;
+  white-space: nowrap;
+}
+
+.container > .table > table > thead > tr > th:nth-child(1),
+.container > .table > table > thead > tr > th:nth-child(2),
+.container > .table > table > thead > tr > th:nth-child(3) {
+  width: 28%;
+}
+.container > .table > table > thead > tr > th:nth-child(4) {
+  width: 16%;
+}
+
+.container > .table > table > thead > tr > th:last-child {
+  text-align: right;
+}
+
+.container > .table > table > tbody > tr:nth-child(odd) {
+  background-color: #fcfcfc;
+}
+.container > .table > table > tbody > tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.container > .table > table > tbody > tr > td {
+  border-top: 1px solid #e9e9e9;
+  padding: 1rem;
+  font-size: 1.4rem;
+  color: #435d7d;
+  white-space: nowrap;
+}
+
+.container > .table > table > tbody > tr > td:last-child {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.container > .table > table > tbody > tr > td:last-child > button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.container > .table > table > tbody > tr > td:last-child > button.edit {
+  color: #ffc720;
+}
+
+.container > .table > table > tbody > tr > td:last-child > button.delete {
+  color: #f5564b;
+}
+
+.container > .table > table > tbody > tr > td:last-child > button:hover {
+  opacity: 0.7;
+}
+
+/* modal */
+.overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  inset: 0;
+}
+
+.overlay.open {
+  visibility: visible;
+}
+
+.overlay.close {
+  visibility: hidden;
+}
+
+.overlay > .modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 0.5rem;
+  width: 700px;
+  max-width: 95vw;
+  background-color: #fff;
+}
+
+.overlay.open > .modal {
+  animation: open 0.2s ease-in-out 1 forwards;
+}
+
+@keyframes open {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.overlay.close > .modal {
+  animation: close 0.05s ease-in-out 1 forwards;
+}
+
+@keyframes close {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+.modal > h2 {
+  font-size: 3rem;
+  font-weight: normal;
+  padding: 3rem 2rem 2rem;
+}
+
+.modal > form {
+  border: 1px solid #cdcdcd;
+  border-left: none;
+  border-right: none;
+  padding: 2rem;
+}
+
+.modal > form > * {
+  display: block;
+}
+
+.modal > form > label {
+  font-weight: bold;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal > form > input {
+  border: 1px solid #cdcdcd;
+  font-size: 1.7rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  outline: none;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.modal > .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.modal > .buttons > button {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cdcdcd;
+  outline: none;
+  cursor: pointer;
+}
+
+.modal > .buttons > button.close {
+  background-color: #f7f7f7;
+}
+
+.modal > .buttons > button.save {
+  background-color: #55b355;
+  color: #fff;
+}
+
+.modal > .floatingIcon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #cdcdcd;
+  font-size: 2.5rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.modal > .floatingIcon:hover {
+  color: #afafaf;
+}
